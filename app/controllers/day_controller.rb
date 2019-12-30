@@ -1,4 +1,5 @@
 class DayController < ApplicationController
+
   def index
     @days = Day.order('day ASC')
   end
@@ -34,6 +35,23 @@ class DayController < ApplicationController
     puts @day
     @day.destroy
     redirect_to day_index_path
+  end
+
+  def edit
+    @day = Day.find(params[:id])
+  end
+
+  def update
+    @day = Day.find params[:id]
+    respond_to do |format|
+      if @day.update_attributes(params[:user])
+        format.html { redirect_to(@day, :notice => 'User was successfully updated.') }
+        format.json { respond_with_bip(@day) }
+      else
+        format.html { render :action => "edit" }
+        format.json { respond_with_bip(@day) }
+      end
+    end
   end
 
 

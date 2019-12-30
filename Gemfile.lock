@@ -63,6 +63,9 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     autoprefixer-rails (9.7.3)
       execjs
+    best_in_place (3.0.3)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
@@ -83,7 +86,6 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
-    chartkick (3.3.0)
     childprocess (3.0.0)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
@@ -225,12 +227,12 @@ PLATFORMS
 
 DEPENDENCIES
   active_link_to
+  best_in_place (~> 3.0.1)
   bootsnap (>= 1.4.2)
   bootstrap
   bootstrap-sass
   byebug
   capybara (>= 2.15)
-  chartkick
   font-awesome-rails
   jbuilder (~> 2.7)
   jquery-rails

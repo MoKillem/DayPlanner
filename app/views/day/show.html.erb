@@ -28,8 +28,7 @@
       </div>
 
     </div>
-    <div class = "goal-title"><%=@day.goal %> </div>   <hr>
-
+    <div class = "goal-title"<%= best_in_place @day, :goal, :as => :input %></div>
       <div>
       <table class="table maxed-table">
         <thead>

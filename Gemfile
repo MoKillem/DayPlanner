@@ -8,12 +8,13 @@ gem 'bootstrap'
 #bootstrap based "prettifier"
 gem 'simple_form'
 # Javascript based graphical gem
-gem 'chartkick'
 #font awesome gem
 gem "font-awesome-rails"
 
 #Jquery
 gem 'jquery-rails'
+#rails inplace editable
+gem 'best_in_place', '~> 3.0.1'
 #checks current link
 gem "active_link_to"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
