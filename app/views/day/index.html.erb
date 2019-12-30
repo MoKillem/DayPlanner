@@ -1,0 +1,41 @@
+<div class = " container container-column-flex">
+  <div class = "container">
+    <div class = "container-column-flex">
+      <div class = "container-column-flex">
+        <div class = "section-title"><pre>Current Day: <span class ='text-primary'><%= Time.now.strftime("%Y-%m-%d") %></span>        Average-death-day: <span class ='text-danger'>2086-11-23 </span>        Time left :  <span class ='text-warning'><%= distance_of_time_in_words(Time.now, '2086-11-23')%></span></pre>
+        </div></div></div></div>
+<table class="table table-dark">
+    <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Score</th>
+      <th scope="col">Actions</th>
+      <th scope="col">Delete Day</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <% @days.each do |day|%>
+      <tr>
+        <td><%=day.day %></td>
+        <td>
+          <% if day.tasks.pluck(:status).map{|k| k ? 1:0}.sum < 1000 %>
+            <span class = "chicken_dinner"><%=   day.tasks.pluck(:status).map{|k| k ? 1:0}.sum%>
+/<%= day.tasks.pluck(:status).count %>
+</span>
+          <%else %>
+            <span class = "nuked">       <%=   day.tasks.pluck(:status).map{|k| k ? 1:0}.sum%>
+              /<%= day.tasks.pluck(:status).count %>
+</span>
+          <%end %>
+        </td>
+        <td><%= button_to 'See more', day_path(:id => day.id) , method: :get,  class:'btn' %></td>
+        <td><%= link_to 'Delete Task', [day],
+                        class: 'btn btn-sm btn-danger',
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <%end %>
+    </tbody>
+  </table>
+</div>

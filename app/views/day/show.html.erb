@@ -1,0 +1,112 @@
+<div class =' icon-seperation'>
+<!--  <button class ="btn icon">-->
+<!--    <i class="icon-direction fa fa-angle-left"></i>-->
+<!--    <span class ='icon-text '><%#=(@day.day - 1) %></span>-->
+<!--  </button>-->
+<!--  <button class ="btn icon" type = >-->
+<!--    <span class =' xtra-icon-padding '><%#=(@day.day + 1) %></span>-->
+<!--    <i class="icon-direction fa fa-angle-right"></i>-->
+<!--  </button>-->
+  <%= button_to @day_before, day_move_path( :day_id => @day.id ) , method: :get , class:'btn btn-warning' , params: {:type => '-'}%>
+  <%= button_to @day_after, day_move_path( :day_id => @day.id ) , method: :get , class:'btn btn-warning' , params: {:type => '+'}%>
+
+
+</div>
+
+<div class = "container">
+  <div class = "container-column-flex">
+    <div class = "container-column-flex">
+      <div class = "section-title"> <pre>Current Day: <span class ='text-primary'><%= @day.day %></span>        Average-death-day: <span class ='text-danger'>2086-11-23 </span>        Time left from this date:  <span class ='text-warning'><%= distance_of_time_in_words(@day.day, '2086-11-23')%><span></pre>
+      </div></div></div></div>
+
+
+<div class = "container">
+  <div class = "container-column-flex">
+    <div class = "container-column-flex">
+      <div class = "section-sub-title">Daily Tasks       <hr>
+
+      </div>
+
+    </div>
+    <div class = "goal-title"><%=@day.goal %> </div>   <hr>
+
+      <div>
+      <table class="table maxed-table">
+        <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Beginning Time</th>
+          <th scope="col">Ending Time</th>
+          <th scope="col">status</th>
+
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <% @day.tasks.each do |task|%>
+          <tr>
+            <td><%= task.title %></td>
+            <td><%= task.description %></td>
+            <td><%= task.try(:time_started).try(:strftime, ("%H:%M"))%></td>
+            <td><%= task.try(:time_ended).try(:strftime, ("%H:%M"))%></td>
+            <td>
+              <%= button_to (task.status ? 'Complete' : 'Ongoing'), day_task_status_path(:day_id => @day.id, :task_id => task.id) , method: :patch , class:(task.status ? 'btn btn-success' : 'btn btn-warning ') %></td>
+
+            <td><%= link_to 'Delete Task', [@day, task],
+                            class: 'btn btn-danger',
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <%end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+
+  <div class = 'container mt-5'>
+    <div class = "container-column-flex m-5">
+      <div class = "section-sub-title">Add task on <%= @day.day %>       <hr>
+      </div>
+    </div>
+
+  <div class = "container-full  ">
+      <%= form_with(model: [ @day, @day.tasks.build ], local: true) do |f| %>
+      <% if @task %>
+      <% if @task.errors.any? %>
+        <div id="error_explanation">
+          <h2 class ="text-danger"><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+          <ul>
+            <% @task.errors.full_messages.each do |msg| %>
+              <li class ='text-danger'><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+        <% end %>
+       <div class="form-group">
+            <%= f.label :title %><br>
+            <%= f.text_field :title,class: 'form-control'%></div>
+      <div class="form-group">
+            <%= f.label :description %><br>
+            <%= f.text_area :description, class: 'form-control' %></div>
+      <div class="form-group">
+            <%= f.label :time_started %><br>
+            <%= f.text_field :time_started, class: 'form-control' %></div>
+      <div class="form-group">
+            <%= f.label :time_ended %><br>
+            <%= f.text_field :time_ended, class: 'form-control'%></div>
+      <div class="form-group btn-full">
+      <%= f.submit class: 'btn btn-block btn-warning ' %>
+      </div>
+</div>
+    <% end %>
+
+    </div>
+  </div>
+</div>

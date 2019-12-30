@@ -1,0 +1,16 @@
+<div class = "container container-column-flex ">
+  <div class = "container container-column-flex ">
+    <div>
+      <hr>
+      <p class = "section-title">Initialize a new day</p>
+      <hr>
+    </div>
+    <div>
+      <%= simple_form_for :day,html:{class:'new-form'}, url: day_index_path do |f|  %>
+          <%= f.input :day, as: :date ,label: 'Date' %>
+          <%= f.input :goal, :as => :text, :input_html => { 'rows' => 5, 'cols' => 10 } %>
+        <%= f.button :submit, 'Add Asset' %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  title: MyString
+  status: false
+  time_started: 2019-12-26 18:56:54
+  time_ended: 2019-12-26 18:56:54
+
+two:
+  description: MyString
+  title: MyString
+  status: false
+  time_started: 2019-12-26 18:56:54
+  time_ended: 2019-12-26 18:56:54

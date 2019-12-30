@@ -1,0 +1,121 @@
+@import "bootstrap-sprockets";
+$enable-flex: true;
+@import 'bootstrap';
+@import "font-awesome";
+
+.container-row-flex{
+  display:flex;
+  padding: 10px;
+  flex-flow:row nowrap;
+  justify-content: space-between;
+}
+
+.active{
+  background-color: #eceae7;
+}
+
+.nuked{
+  color:red;
+}
+
+.chicken_dinner{
+  color: #190fff;
+}
+
+.barchart-styling-index{
+  display:flex;
+  justify-content:center;
+  margin-top:20px;
+  flex-wrap: nowrap;
+}
+
+.sub-section-title{
+  margin: 50px 0;
+}
+
+.goal-title{
+  font-size: 20px;
+  color:orangered;
+  margin: 50px 0;
+}
+
+.container-column-flex{
+  display:flex;
+  justify-content:space-between;
+  padding-bottom: 10px;
+  flex-flow:column wrap;
+}
+
+.section-title{
+  font-size: xx-large;
+  margin: 10px;
+}
+.section-sub-title{
+  font-size: x-large;
+  margin: 10px;
+}
+
+
+.link_btn:hover{
+  text-decoration: none;
+
+}
+
+.new-form{
+  .date{
+    margin-top:10px;
+  }
+}
+
+.container-full{
+  margin-left: 25%;
+  margin-bottom: 30px;
+  input{
+    width:70%;
+    margin-top: 10px;
+  }
+  textarea{
+    width:70%;
+    margin-top: 10px;
+
+  }
+}
+.table-dark{
+
+  th{
+    font-weight: bolder;
+    font-size: 15px;
+    background: #292929;
+    color:white;
+  }
+}
+
+.btn-full{
+  width:70%;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+.icon-seperation{
+  display:flex;
+  padding: 10px;
+  flex-flow:row nowrap;
+  justify-content: space-between;
+  .icon-direction{
+    font-size: 30px;
+    color:lightslategray;
+  }
+  .icon-text{
+    padding:5px 10px 0 10px
+  }
+  .xtra-icon-padding{
+    padding:6px 10px 0 10px
+  }
+  .icon{
+    padding-right: 10px;
+    display:flex;
+  }
+}
